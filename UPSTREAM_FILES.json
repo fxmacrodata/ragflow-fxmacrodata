@@ -1,0 +1,19 @@
+{
+  "repo": "infiniflow/ragflow",
+  "commit": "5bd80b3455b6670cd07e0cd09c8a08a5ada6bee7",
+  "original_sha256": {
+    "web/src/components/operator-icon.tsx": "aada281436e39ac98fae80719ab6460444dafcf0288cacbf50e548046d5e43e4",
+    "web/src/constants/agent.tsx": "087f46ecf7e9d2815cc61a5974f961135b98e33b901db430ee278d7b69c04575",
+    "web/src/locales/en.ts": "3cd7d3fe45223e3466f7f0bc782dd91d67f5210ec525004da5f23c06f9d81f5d",
+    "web/src/locales/zh.ts": "3b4ebac579cf93b3c2be53b77312d0dd2b9a738212aea175e008a0956e700771",
+    "web/src/pages/agent/canvas/node/dropdown/accordion-operators.tsx": "1ed97750b563803f47583ff7cd29b4cb57d476b1b75b8732b00887a65c800202",
+    "web/src/pages/agent/constant/index.tsx": "33b3428c49365256b119e5aeffa2e1361c92715c893c1d01f3454a4610e5a69e",
+    "web/src/pages/agent/form-sheet/form-config-map.tsx": "888e488c564ad0a2343b9f918a96bcf4ea1dea076bcf26ed192066fb52b7e1c5",
+    "web/src/pages/agent/form/agent-form/tool-popover/tool-command.tsx": "c8206835109a4b6299f3836517a10de2d61e73e4252b17f8f6ad7e1e0411515e",
+    "web/src/pages/agent/form/tool-form/constant.tsx": "e831fa006b15216c0a4e789738c9517447b52d45620502996f5f1fcb8d97e520",
+    "web/src/pages/agent/hooks/use-add-node.ts": "7d8a65c5afd08569a6e09e9e43fa2bc82cdbc694dcd186f118f2e9aa1a9e2ae6",
+    "web/src/pages/agent/hooks/use-agent-tool-initial-values.ts": "d9cea90409acc0851a3bed49f60221495628512ec6a5d4a04ffff2c7ad131615",
+    "web/src/pages/agent/log-sheet/tool-name.ts": "2d2b072c8148d6765135a2ea8289ff58ba6b5ccfc2f41f45c5e680803744c3de",
+    "web/src/pages/agent/log-sheet/tool-timeline-item.tsx": "3410f8bd202e5fa8d00c89b5335c03bef9daea2e49792d11b760b6ad5ad09ecb"
+  }
+}

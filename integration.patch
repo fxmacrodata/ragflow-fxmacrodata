@@ -1,0 +1,250 @@
+--- a/web/src/components/operator-icon.tsx
++++ b/web/src/components/operator-icon.tsx
+@@ -1,3 +1,4 @@
++// Modified by FXMacroData to add the FXMacroData integration.
+ /*
+  *  Copyright 2026 The InfiniFlow Authors. All Rights Reserved.
+  *
+@@ -84,6 +85,7 @@
+   [Operator.Crawler]: 'crawler',
+ };
+ export const LucideIconMap = {
++  [Operator.FXMacroData]: Globe,
+   [Operator.DataOperations]: FileCode,
+   [Operator.Loop]: InfinityIcon,
+   [Operator.ExitLoop]: LogOut,
+--- a/web/src/constants/agent.tsx
++++ b/web/src/constants/agent.tsx
+@@ -1,3 +1,4 @@
++// Modified by FXMacroData to add the FXMacroData integration.
+ /*
+  *  Copyright 2026 The InfiniFlow Authors. All Rights Reserved.
+  *
+@@ -120,6 +121,7 @@
+   KeenableSearch = 'KeenableSearch',
+   YouComSearch = 'YouComSearch',
+   SofyaSearch = 'SofyaSearch',
++  FXMacroData = 'FXMacroData',
+   DocGenerator = 'DocGenerator',
+   Browser = 'Browser',
+   Placeholder = 'Placeholder',
+--- a/web/src/locales/en.ts
++++ b/web/src/locales/en.ts
+@@ -1,3 +1,4 @@
++// Modified by FXMacroData to add the FXMacroData integration.
+ export default {
+   translation: {
+     common: {
+@@ -2801,6 +2802,8 @@
+       youComFreshnessMonth: 'Past month',
+       youComFreshnessYear: 'Past year',
+       youComApiKeyTip: 'Optional. Leave blank to use the keyless free tier.',
++      fXMacroData: 'FXMacroData',
++      fXMacroDataDescription: 'Economic data, FX research and release calendars from FXMacroData.',
+       sofyaSearch: 'Sofya',
+       sofyaSearchDescription:
+         'A web search component powered by Sofya. Results carry the content of each result page, or only its search snippet, depending on the search depth. An API Key is required.',
+--- a/web/src/locales/zh.ts
++++ b/web/src/locales/zh.ts
+@@ -1,3 +1,4 @@
++// Modified by FXMacroData to add the FXMacroData integration.
+ export default {
+   translation: {
+     common: {
+@@ -2423,6 +2424,8 @@
+       youComFreshnessMonth: '一个月内',
+       youComFreshnessYear: '一年内',
+       youComApiKeyTip: '可选。留空则使用免密钥的免费额度。',
++      fXMacroData: 'FXMacroData',
++      fXMacroDataDescription: '通过 FXMacroData 获取经济数据、外汇研究和经济发布日历。',
+       sofyaSearch: 'Sofya',
+       sofyaSearchDescription:
+         '基于 Sofya 的网络搜索组件。根据搜索深度，结果附带结果页面的正文内容或仅附带搜索摘要。需要配置 API Key。',
+--- a/web/src/pages/agent/canvas/node/dropdown/accordion-operators.tsx
++++ b/web/src/pages/agent/canvas/node/dropdown/accordion-operators.tsx
+@@ -1,3 +1,4 @@
++// Modified by FXMacroData to add the FXMacroData integration.
+ import {
+   Accordion,
+   AccordionContent,
+@@ -128,6 +129,7 @@
+               Operator.KeenableSearch,
+               Operator.YouComSearch,
+               Operator.SofyaSearch,
++      Operator.FXMacroData,
+               Operator.DocGenerator,
+               Operator.Browser,
+             ]}
+--- a/web/src/pages/agent/constant/index.tsx
++++ b/web/src/pages/agent/constant/index.tsx
+@@ -1,3 +1,4 @@
++// Modified by FXMacroData to add the FXMacroData integration.
+ import {
+   initialKeywordsSimilarityWeightValue,
+   initialSimilarityThresholdValue,
+@@ -217,6 +218,19 @@
+       value: [],
+       type: 'Array<Object>',
+     },
++  },
++};
++
++export const initialFXMacroDataValues = {
++  operation: 'release_calendar',
++  arguments: { currency: 'usd' },
++  timeout: 30,
++  use_credentials: false,
++  outputs: {
++    formalized_content: { value: '', type: 'string' },
++    json: { value: [], type: 'Array<Object>' },
++    response: { value: {}, type: 'Object' },
++    source_url: { value: '', type: 'string' },
+   },
+ };
+ 
+@@ -798,6 +812,7 @@
+   [Operator.KeenableSearch]: [Operator.Begin, Operator.Retrieval],
+   [Operator.YouComSearch]: [Operator.Begin, Operator.Retrieval],
+   [Operator.SofyaSearch]: [Operator.Begin, Operator.Retrieval],
++  [Operator.FXMacroData]: [Operator.Begin, Operator.Retrieval],
+   [Operator.ExeSQL]: [Operator.Begin],
+   [Operator.Switch]: [Operator.Begin],
+   [Operator.WenCai]: [Operator.Begin],
+@@ -856,6 +871,7 @@
+   [Operator.KeenableSearch]: 'ragNode',
+   [Operator.YouComSearch]: 'ragNode',
+   [Operator.SofyaSearch]: 'ragNode',
++  [Operator.FXMacroData]: 'ragNode',
+   [Operator.ExeSQL]: 'ragNode',
+   [Operator.Switch]: 'switchNode',
+   [Operator.WenCai]: 'ragNode',
+--- a/web/src/pages/agent/form-sheet/form-config-map.tsx
++++ b/web/src/pages/agent/form-sheet/form-config-map.tsx
+@@ -1,3 +1,4 @@
++// Modified by FXMacroData to add the FXMacroData integration.
+ import { Operator } from '../constant';
+ import AgentForm from '../form/agent-form';
+ import ArXivForm from '../form/arxiv-form';
+@@ -22,6 +23,7 @@
+ import IterationStartForm from '../form/iteration-start-from';
+ import KeenableForm from '../form/keenable-form';
+ import SofyaForm from '../form/sofya-form';
++import FXMacroDataForm from '../form/fxmacrodata-form';
+ import YouComForm from '../form/youcom-form';
+ import ListOperationsForm from '../form/list-operations-form';
+ import LoopForm from '../form/loop-form';
+@@ -83,6 +85,7 @@
+   [Operator.YouComSearch]: {
+     component: YouComForm,
+   },
++  [Operator.FXMacroData]: { component: FXMacroDataForm },
+   [Operator.SofyaSearch]: {
+     component: SofyaForm,
+   },
+--- a/web/src/pages/agent/form/agent-form/tool-popover/tool-command.tsx
++++ b/web/src/pages/agent/form/agent-form/tool-popover/tool-command.tsx
+@@ -1,3 +1,4 @@
++// Modified by FXMacroData to add the FXMacroData integration.
+ import { Checkbox } from '@/components/ui/checkbox';
+ import {
+   Command,
+@@ -32,6 +33,7 @@
+       Operator.KeenableSearch,
+       Operator.YouComSearch,
+       Operator.SofyaSearch,
++      Operator.FXMacroData,
+       Operator.YahooFinance,
+       Operator.PubMed,
+       Operator.BGPT,
+--- a/web/src/pages/agent/form/tool-form/constant.tsx
++++ b/web/src/pages/agent/form/tool-form/constant.tsx
+@@ -1,3 +1,4 @@
++// Modified by FXMacroData to add the FXMacroData integration.
+ import { Operator } from '../../constant';
+ import ArXivForm from './arxiv-form';
+ import BingForm from './bing-form';
+@@ -10,6 +11,7 @@
+ import GoogleScholarForm from './google-scholar-form';
+ import KeenableForm from './keenable-form';
+ import SofyaForm from './sofya-form';
++import FXMacroDataForm from './fxmacrodata-form';
+ import YouComForm from './youcom-form';
+ import PubMedForm from './pubmed-form';
+ import QueritForm from './querit-form';
+@@ -46,4 +48,5 @@
+   [Operator.KeenableSearch]: KeenableForm,
+   [Operator.YouComSearch]: YouComForm,
+   [Operator.SofyaSearch]: SofyaForm,
++  [Operator.FXMacroData]: FXMacroDataForm,
+ };
+--- a/web/src/pages/agent/hooks/use-add-node.ts
++++ b/web/src/pages/agent/hooks/use-add-node.ts
+@@ -1,3 +1,4 @@
++// Modified by FXMacroData to add the FXMacroData integration.
+ import { useFetchDefaultModelDictionary } from '@/hooks/use-llm-request';
+ import { pickByBackend } from '@/utils/backend-variant';
+ import { Connection, Node, Position, ReactFlowInstance } from '@xyflow/react';
+@@ -33,6 +34,7 @@
+   initialIterationValues,
+   initialKeenableValues,
+   initialSofyaValues,
++  initialFXMacroDataValues,
+   initialYouComValues,
+   initialListOperationsValues,
+   initialLoopValues,
+@@ -178,6 +180,7 @@
+       [Operator.KeenableSearch]: initialKeenableValues,
+       [Operator.YouComSearch]: initialYouComValues,
+       [Operator.SofyaSearch]: initialSofyaValues,
++    [Operator.FXMacroData]: initialFXMacroDataValues,
+       [Operator.UserFillUp]: initialUserFillUpValues,
+       [Operator.StringTransform]: initialStringTransformValues,
+       [Operator.TavilyExtract]: initialTavilyExtractValues,
+--- a/web/src/pages/agent/hooks/use-agent-tool-initial-values.ts
++++ b/web/src/pages/agent/hooks/use-agent-tool-initial-values.ts
+@@ -1,3 +1,4 @@
++// Modified by FXMacroData to add the FXMacroData integration.
+ import { omit, pick } from 'lodash';
+ import { useCallback } from 'react';
+ import { Operator } from '../constant';
+@@ -70,6 +71,8 @@
+           return pick(initialValues, 'api_key', 'mode', 'site', 'top_n');
+         case Operator.YouComSearch:
+           return pick(initialValues, 'api_key', 'freshness', 'top_n');
++        case Operator.FXMacroData:
++          return pick(initialValues, 'operation', 'arguments', 'timeout', 'use_credentials');
+         case Operator.SofyaSearch:
+           return pick(initialValues, 'api_key', 'search_depth', 'top_n');
+ 
+--- a/web/src/pages/agent/log-sheet/tool-name.ts
++++ b/web/src/pages/agent/log-sheet/tool-name.ts
+@@ -1,8 +1,13 @@
++// Modified by FXMacroData to add the FXMacroData integration.
+ import { Operator } from '@/constants/agent';
+ 
+ export function getToolOperatorName(toolName?: string | null) {
+   if (!toolName) {
+     return '';
++  }
++
++  if (toolName.startsWith('fxmacrodata_') || toolName === Operator.FXMacroData) {
++    return Operator.FXMacroData;
+   }
+ 
+   const normalizedName = toolName.replaceAll('_', '').toLowerCase();
+--- a/web/src/pages/agent/log-sheet/tool-timeline-item.tsx
++++ b/web/src/pages/agent/log-sheet/tool-timeline-item.tsx
+@@ -1,3 +1,4 @@
++// Modified by FXMacroData to add the FXMacroData integration.
+ import {
+   TimelineContent,
+   TimelineHeader,
+@@ -125,7 +126,7 @@
+                     <OperatorIcon
+                       className="size-4"
+                       name={
+-                        (SVGIconMap[toolName as IToolIcon]
++                        (toolName === Operator.FXMacroData || SVGIconMap[toolName as IToolIcon]
+                           ? toolName
+                           : 'Agent') as Operator
+                       }
