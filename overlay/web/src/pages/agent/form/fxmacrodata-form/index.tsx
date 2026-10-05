@@ -111,7 +111,7 @@ export function FXMacroDataWidgets({
   return (
     <>
       <a
-        href="https://fxmacrodata.com/documentation/reference?utm_source=ragflow&utm_medium=integration&utm_campaign=open_source_integrations&utm_content=app"
+        href="https://fxmacrodata.com/documentation/reference?utm_source=ragflow&utm_medium=integration&utm_campaign=ragflow-fxmacrodata&utm_content=docs"
         target="_blank"
         rel="noreferrer"
       >

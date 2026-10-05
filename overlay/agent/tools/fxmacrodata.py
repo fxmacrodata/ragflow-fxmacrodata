@@ -12,7 +12,7 @@ from agent.tools.fxmacrodata_client import FXMacroDataError, Result, list_operat
 from agent.tools.fxmacrodata_response_safety import sanitize_response
 
 OPERATIONS = {operation.name: operation for operation in list_operations()}
-PROVIDER_URL = "https://fxmacrodata.com/?utm_source=ragflow&utm_medium=integration&utm_campaign=open_source_integrations&utm_content=app"
+PROVIDER_URL = "https://fxmacrodata.com/?utm_source=ragflow&utm_medium=integration&utm_campaign=ragflow-fxmacrodata&utm_content=app"
 
 
 class FXMacroDataClient(_PublicClient):
