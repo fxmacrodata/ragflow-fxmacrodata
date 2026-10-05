@@ -81,4 +81,4 @@ This table describes the included public discovery snapshot: 23 REST operations 
 | `mcp_financial_prices` | MCP tools/call | Operation selector: `mcp_financial_prices` |
 | `mcp_official_dataset_family` | MCP tools/call | Operation selector: `mcp_official_dataset_family` |
 
-[FXMacroData API reference](https://fxmacrodata.com/documentation/reference?utm_source=github&utm_medium=referral&utm_campaign=open_source_integrations&utm_content=ragflow_docs)
+[FXMacroData API reference](https://fxmacrodata.com/documentation/reference?utm_source=github&utm_medium=referral&utm_campaign=ragflow-fxmacrodata&utm_content=docs)

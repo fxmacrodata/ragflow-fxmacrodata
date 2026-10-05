@@ -2,13 +2,13 @@
 
 Use your FXMacroData subscription to bring cross-currency indicators, full available histories and release calendars into RAGFlow workflows and Agent research. Source-linked reference chunks let generated answers cite the economic data used by each workflow.
 
-**[Subscribe to FXMacroData](https://fxmacrodata.com/subscribe?utm_source=github&utm_medium=referral&utm_campaign=open_source_integrations&utm_content=ragflow_subscribe)** for access to covered non-USD datasets and full available history.
+**[Subscribe to FXMacroData](https://fxmacrodata.com/subscribe?utm_source=github&utm_medium=referral&utm_campaign=ragflow-fxmacrodata&utm_content=subscribe)** for access to covered non-USD datasets and full available history.
 
 Evaluate the integration before subscribing with public USD catalogue, recent indicator history (currently a rolling 90-day window) and calendars, which require no FXMacroData key or account.
 
 Select from 23 REST operations and 49 hosted MCP tools, configure typed inputs, and use source-linked reference chunks, record tables and complete API responses in subsequent workflow steps.
 
-[FXMacroData](https://fxmacrodata.com/?utm_source=github&utm_medium=referral&utm_campaign=open_source_integrations&utm_content=ragflow_readme) · [API reference](https://fxmacrodata.com/documentation/reference?utm_source=github&utm_medium=referral&utm_campaign=open_source_integrations&utm_content=ragflow_docs)
+[FXMacroData](https://fxmacrodata.com/?utm_source=github&utm_medium=referral&utm_campaign=ragflow-fxmacrodata&utm_content=readme) · [API reference](https://fxmacrodata.com/documentation/reference?utm_source=github&utm_medium=referral&utm_campaign=ragflow-fxmacrodata&utm_content=docs)
 
 ## Install
 
